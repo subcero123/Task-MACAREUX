@@ -1,8 +1,6 @@
-
 ## Installation
 
 ### Clone the repository:
-
 ```bash
 git clone <repository-url>
 cd project
@@ -10,15 +8,14 @@ cd project
 
 ### Set up the environment:
 - Create a `.env` file with the necessary configurations.
-
 ```bash
 cp .env.example .env
-
 ```
 
-### Install dependencies (if applicable):
+### Set up the database:
+- Run the provided SQL script to set up the database.
 ```bash
-composer install  # for PHP dependencies
+mysql -u your_user -p your_database < sql_scrip.sql
 ```
 
 ## Running the Program
@@ -47,9 +44,10 @@ cd project
 cp .env.example .env
 ```
 
-### 依存関係をインストールします（該当する場合）:
+### データベースを設定します:
+- 提供されたSQLスクリプトを実行してデータベースを設定します。
 ```bash
-composer install  # PHPの依存関係
+mysql -u your_user -p your_database < sql_scrip.sql
 ```
 
 ## プログラムの実行
