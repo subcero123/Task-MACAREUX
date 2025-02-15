@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Population</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        function getPopulation() {
+            const prefecture = document.getElementById('prefecture').value;
+            const year = document.getElementById('year').value;
+
+            fetch(`show_population.php?prefecture=${prefecture}&year=${year}`)
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('result').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.getElementById('result').innerHTML = 'Ocurrió un error al consultar los datos.';
+                });
+        }
+    </script>
+    <style>
+        .custom-container {
+            max-width: 500px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #e5e7eb;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 font-sans">
+
+    <nav class="bg-gray-800 p-4">
+        <div class="container mx-auto flex justify-between">
+            <div class="flex space-x-4">
+                <a href="index.html" class="text-white font-bold hover:bg-gray-700 px-3 py-2 rounded">Home</a>
+                <a href="import.html" class="text-white  hover:bg-gray-700 px-3 py-2 rounded">Import</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="custom-container bg-white">
+        <h1 class="text-2xl font-bold text-center text-gray-800 mb-6">Search Population</h1>
+        <form onsubmit="event.preventDefault(); getPopulation();" class="space-y-4">
+            <div>
+                <label for="prefecture" class="block text-sm font-medium text-gray-700">Prefecture</label>
+                <select name="prefecture" id="prefecture" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="全　国">全　国</option>
+                    <option value="01 北海道">01 北海道</option>
+                    <option value="02 青森県">02 青森県</option>
+                    <option value="03 岩手県">03 岩手県</option>
+                    <option value="04 宮城県">04 宮城県</option>
+                    <option value="05 秋田県">05 秋田県</option>
+                    <option value="06 山形県">06 山形県</option>
+                    <option value="07 福島県">07 福島県</option>
+                    <option value="08 茨城県">08 茨城県</option>
+                    <option value="09 栃木県">09 栃木県</option>
+                    <option value="10 群馬県">10 群馬県</option>
+                    <option value="11 埼玉県">11 埼玉県</option>
+                    <option value="12 千葉県">12 千葉県</option>
+                    <option value="13 東京都">13 東京都</option>
+                    <option value="14 神奈川県">14 神奈川県</option>
+                    <option value="15 新潟県">15 新潟県</option>
+                    <option value="16 富山県">16 富山県</option>
+                    <option value="17 石川県">17 石川県</option>
+                    <option value="18 福井県">18 福井県</option>
+                    <option value="19 山梨県">19 山梨県</option>
+                    <option value="20 長野県">20 長野県</option>
+                    <option value="21 岐阜県">21 岐阜県</option>
+                    <option value="22 静岡県">22 静岡県</option>
+                    <option value="23 愛知県">23 愛知県</option>
+                    <option value="24 三重県">24 三重県</option>
+                    <option value="25 滋賀県">25 滋賀県</option>
+                    <option value="26 京都府">26 京都府</option>
+                    <option value="27 大阪府">27 大阪府</option>
+                    <option value="28 兵庫県">28 兵庫県</option>
+                    <option value="29 奈良県">29 奈良県</option>
+                    <option value="30 和歌山県">30 和歌山県</option>
+                    <option value="31 鳥取県">31 鳥取県</option>
+                    <option value="32 島根県">32 島根県</option>
+                    <option value="33 岡山県">33 岡山県</option>
+                    <option value="34 広島県">34 広島県</option>
+                    <option value="35 山口県">35 山口県</option>
+                    <option value="36 徳島県">36 徳島県</option>
+                    <option value="37 香川県">37 香川県</option>
+                    <option value="38 愛媛県">38 愛媛県</option>
+                    <option value="39 高知県">39 高知県</option>
+                    <option value="40 福岡県">40 福岡県</option>
+                    <option value="41 佐賀県">41 佐賀県</option>
+                    <option value="42 長崎県">42 長崎県</option>
+                    <option value="43 熊本県">43 熊本県</option>
+                    <option value="44 大分県">44 大分県</option>
+                    <option value="45 宮崎県">45 宮崎県</option>
+                    <option value="46 鹿児島県">46 鹿児島県</option>
+                    <option value="47 沖縄県">47 沖縄県</option>
+                </select>
+            </div>
+            <div>
+                <label for="year" class="block text-sm font-medium text-gray-700">Year</label>
+                <select name="year" id="year" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                    <option value="1935">1935</option>
+                    <option value="1947">1947</option>
+                    <option value="1950">1950</option>
+                    <option value="1955">1955</option>
+                    <option value="1960">1960</option>
+                    <option value="1965">1965</option>
+                    <option value="1970">1970</option>
+                    <option value="1975">1975</option>
+                    <option value="1980">1980</option>
+                    <option value="1985">1985</option>
+                    <option value="1990">1990</option>
+                    <option value="1995">1995</option>
+                    <option value="2000">2000</option>
+                    <option value="2005">2005</option>
+                    <option value="2010">2010</option>
+                    <option value="2012">2012</option>
+                    <option value="2013">2013</option>
+                    <option value="2014">2014</option>
+                    <option value="2015">2015</option>
+                    <option value="2016">2016</option>
+                    <option value="2017">2017</option>
+                    <option value="2018">2018</option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+                    <option value="2022">2022</option>
+                </select>
+            </div>
+
+            <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                Get Population
+            </button>
+        </form>
+
+        <div id="result" class="mt-6 text-center text-gray-700"></div>
+    </div>
+
+</body>
+</html>
